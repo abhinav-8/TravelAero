@@ -1,10 +1,7 @@
-# Welcome to Travel Aero
+# TravelAero's FlightsAndSearch Service 
 
 ## Project Setup:
 
-### Server
-
-#### Service FlightsAndSearch
 - Go to `flightsAndSearch/src` and execute `npm install`
 - Create a `.env` file in the `flightsAndSearch` directory based on file `.envExample` 
 - Create a new  file `config.json` inside `src/config` folder with following json
@@ -22,8 +19,11 @@
 }
 
 ```
-- Go to `flightsAndSearch/src` and execute `npx sequelize db:create`
+* Go to `flightsAndSearch/src` and execute 
+  * `npx sequelize db:create`
+  * `npx sequelize db:migrate`
 
+<br>
 
 ## DB Design
 
