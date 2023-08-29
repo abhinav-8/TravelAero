@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { PORT } = require('./config/serverConfig');
-const CityRepository = require('./repository/city');
-
+const ApiRoutes = require('./routes/index');
 const setupServer = async () => {
     
     //Create express object
@@ -11,11 +10,12 @@ const setupServer = async () => {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
+
+    // If any incoming request has /api,it's gonna map to ApiRoutes
+    app.use('/api', ApiRoutes);
+
     app.listen(PORT,() => {
         console.log(`Server started at ${PORT}`);
-        const repo = new CityRepository();
-        const city = repo.createCity({name:"fzd"});
-        // console.log(city);
     });
 }
 

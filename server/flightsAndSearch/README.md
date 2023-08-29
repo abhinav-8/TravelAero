@@ -21,6 +21,7 @@
 ```
 * Go to `flightsAndSearch/src` and execute 
   * `npx sequelize db:create`
+  * `npx sequelize model:generate --name City --attributes name:String`(To create model,just an FYI,skip this)
   * `npx sequelize db:migrate`
 
 <br>

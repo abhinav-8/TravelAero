@@ -2,7 +2,7 @@ const {CityService} = require("../services/index");
 
 const cityService = new CityService();
 
-//POST -> /city
+//POST -> /city/
 const create = async (req,res) => {
     try {
         const response = await cityService.createCity(req.body);
