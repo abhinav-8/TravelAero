@@ -84,11 +84,33 @@ const destroy = async (req,res) => {
             err: error
         });
     }
-} 
+}
+
+//GET -> /city
+const getAll = async (req,res) => {
+    try {
+        const response = await cityService.getAllCities(req.query);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: 'Successfully fetched cities',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Oops! Some error occured, can\'t fetch cities',
+            err: error
+        });
+    }
+}
 
 module.exports = {
     create,
     get,
     update,
     destroy,
+    getAll,
 }
