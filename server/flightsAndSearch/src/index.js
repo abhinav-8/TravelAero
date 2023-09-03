@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const { PORT } = require('./config/serverConfig');
 const ApiRoutes = require('./routes/index');
+const db = require('./models/index')
 const setupServer = async () => {
     
     //Create express object
@@ -16,6 +17,8 @@ const setupServer = async () => {
 
     app.listen(PORT,() => {
         console.log(`Server started at ${PORT}`);
+        // Uncomment below line when you make any changes in associations and all
+        // db.sequelize.sync({alter:true});
     });
 }
 

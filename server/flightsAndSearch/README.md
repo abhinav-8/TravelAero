@@ -23,6 +23,7 @@
   * `npx sequelize db:create`
   * `npx sequelize model:generate --name City --attributes name:String`(To create model,just an FYI,skip this)
   * `npx sequelize db:migrate`
+  * `npx sequelize model:generate --name Airport --attributes cityId:integer,name:string,address:string`
 
 <br>
 
