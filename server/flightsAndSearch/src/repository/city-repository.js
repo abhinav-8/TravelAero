@@ -2,11 +2,9 @@ const { City } = require("../models/index");
 const { Op } = require("sequelize");
 
 class CityRepository {
-  async createCity({ name }) {
+  async createCity(cities) {
     try {
-      const city = await City.create({
-        name,
-      });
+      const city = await City.bulkCreate(cities);
       return city;
     } catch (error) {
       console.log("FlightsAndSearch: Something went wrong in repository layer");
