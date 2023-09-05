@@ -7,7 +7,7 @@ class CityRepository {
       const city = await City.bulkCreate(cities);
       return city;
     } catch (error) {
-      console.log("FlightsAndSearch: Something went wrong in repository layer");
+      console.log("CityRepository: Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -17,7 +17,7 @@ class CityRepository {
       const city = await City.findByPk(cityId);
       return city;
     } catch (error) {
-      console.log("FlightsAndSearch: Something went wrong in repository layer");
+      console.log("CityRepository: Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -37,7 +37,7 @@ class CityRepository {
       await city.save();
       return city;
     } catch (error) {
-      console.log("FlightsAndSearch: Something went wrong in repository layer");
+      console.log("CityRepository: Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -51,7 +51,7 @@ class CityRepository {
       });
       return true;
     } catch (error) {
-      console.log("FlightsAndSearch: Something went wrong in repository layer");
+      console.log("CityRepository: Something went wrong in repository layer");
       throw { error };
     }
   }
@@ -73,7 +73,7 @@ class CityRepository {
       const cities = await City.findAll();
       return cities;
     } catch (error) {
-      console.log("FlightsAndSearch: Something went wrong in repository layer");
+      console.log("CityRepository: Something went wrong in repository layer");
       throw { error };
     }
   }
