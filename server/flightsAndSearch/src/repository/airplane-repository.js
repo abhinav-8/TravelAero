@@ -3,7 +3,7 @@ const { Airplane } = require("../models/index");
 
 class AirplaneRepository extends CrudRepository {
     constructor() {
-        super(Airplane);
+        super(Airplane,"AirplaneRepository");
     }
 }
 

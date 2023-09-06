@@ -23,7 +23,10 @@
   * `npx sequelize db:create`
   * `npx sequelize model:generate --name City --attributes name:String`(To create model,just an FYI,skip this)
   * `npx sequelize db:migrate`
-  * `npx sequelize model:generate --name Airport --attributes cityId:integer,name:string,address:string`
+  * `npx sequelize model:generate --name Airport --attributes cityId:integer,name:string,address:string`(Skip, again an FYI)
+  * `npx sequelize db:seed:all`
+
+- Go to `flightsAndSearch` and start the server by `npm start`
 
 <br>
 

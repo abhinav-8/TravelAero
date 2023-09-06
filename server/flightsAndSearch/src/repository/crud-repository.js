@@ -1,7 +1,8 @@
 class CrudRepository {
     
-    constructor(model){
+    constructor(model,name){
         this.model = model;
+        this.name = name;
     }
 
     async create(data) {
@@ -9,7 +10,7 @@ class CrudRepository {
             const result = await this.model.create(data);
             return result;
         } catch (error) {
-            console.log(`${this.model} : Something went wrong in crud repository layer`);
+            console.log(`${this.name} : Something went wrong in crud repository layer`);
             throw {error};
         }
     }
@@ -19,7 +20,7 @@ class CrudRepository {
             const result  = await this.model.findByPk(modelId);
             return result;
         } catch (error) {
-            console.log(`${this.model} : Something went wrong in crud repository layer`);
+            console.log(`${this.name} : Something went wrong in crud repository layer`);
             throw {error};
         }
     }
@@ -29,7 +30,7 @@ class CrudRepository {
             const result = await this.model.findAll();
             return result;
         } catch (error) {
-            console.log(`${this.model} : Something went wrong in crud repository layer`);
+            console.log(`${this.name} : Something went wrong in crud repository layer`);
             throw {error};
         }
     }
@@ -53,7 +54,7 @@ class CrudRepository {
             });
             return true;
         } catch (error) {
-            console.log(`${this.model} : Something went wrong in crud repository layer`);
+            console.log(`${this.name} : Something went wrong in crud repository layer`);
             throw {error};
         }
     }
@@ -67,7 +68,7 @@ class CrudRepository {
               });
               return true;
         } catch (error) {
-            console.log(`${this.model} : Something went wrong in crud repository layer`);
+            console.log(`${this.name} : Something went wrong in crud repository layer`);
             throw {error};
         }
     }

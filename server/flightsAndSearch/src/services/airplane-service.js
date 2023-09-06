@@ -4,7 +4,7 @@ const { AirplaneRepository } = require("../repository/index");
 class AirplaneService extends CrudService {
     constructor() {
         const airplaneRepository = new AirplaneRepository();
-        super(airplaneRepository);
+        super(airplaneRepository,"AirplaneService");
     }
 }
 
