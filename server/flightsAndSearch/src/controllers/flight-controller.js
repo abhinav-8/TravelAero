@@ -1,12 +1,22 @@
 const {FlightService} = require('../services/index');
-const {serverErrorCodes,successCodes} = require("../utils/error-codes");
+const { serverErrorCodes, successCodes } = require("../utils/error-codes");
 
 const flightService = new FlightService();
 
 //POST -> /flights
 const create = async(req, res) => {
     try {
-        const response = await flightService.create(req.body);
+        let flightRequestData = {
+            airplaneId: req.body.airplaneId,
+            flightNumber: req.body.flightNumber,
+            departureAirportId: req.body.departureAirportId,
+            arrivalAirportId: req.body.arrivalAirportId,
+            departureTime: req.body.departureTime,
+            arrivalTime: req.body.arrivalTime,
+            price: req.body.price,
+            boardingGate: req.body.boardingGate,
+        }
+        const response = await flightService.create(flightRequestData);
         return res.status(successCodes.CREATED).json({
             data: response,
             success: true,
