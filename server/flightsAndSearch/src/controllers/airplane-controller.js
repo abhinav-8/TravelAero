@@ -1,15 +1,15 @@
-const {FlightService} = require('../services/index');
+const {AirplaneService} = require("../services/index");
 
-const flightService = new FlightService();
+const airplaneService = new AirplaneService();
 
-//POST -> /flights
-const create = async(req, res) => {
+//POST -> /airplanes
+const create = async (req,res) => {
     try {
-        const response = await flightService.create(req.body);
+        const response = await airplaneService.create(req.body);
         return res.status(201).json({
             data: response,
             success: true,
-            message: 'Successfully created flight',
+            message: 'Successfully created airplane',
             err: {}
         });
     } catch (error) {
@@ -17,20 +17,20 @@ const create = async(req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t create a flight',
+            message: 'Oops! Some error occurred, can\'t create airplane',
             err: error
         });
     }
 }
 
-//GET -> /flights/:id
+//GET -> /airplanes/:id
 const get = async (req,res) => {
     try {
-        const response = await flightService.get(req.params.id);
+        const response = await airplaneService.get(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully fetched flight',
+            message: 'Successfully fetched airplane',
             err: {}
         });
     } catch (error) {
@@ -38,62 +38,20 @@ const get = async (req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t fetch flight',
-            err: error
-        });
-    }
-}
-
-//GET -> /flights
-const getAll = async (req,res) => {
-    try {
-        const response = await flightService.getAll(req.query);
-        return res.status(200).json({
-            data: response,
-            success: true,
-            message: 'Successfully fetched flights',
-            err: {}
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            data: {},
-            success: false,
-            message: 'Oops! Some error occurred, can\'t fetch flights',
-            err: error
-        });
-    }
-}
-
-//PATCH -> /flights/:id
-const update = async (req,res) => {
-    try {
-        const response = await flightService.update(req.params.id, req.body);
-        return res.status(200).json({
-            data: response,
-            success: true,
-            message: 'Successfully updated flight details',
-            err: {}
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            data: {},
-            success: false,
-            message: 'Oops! Some error occurred, can\'t update flight details',
+            message: 'Oops! Some error occurred, can\'t fetch airplane',
             err: error
         });
     }
 } 
 
-//DELETE -> /flights/:id
-const destroy = async (req,res) => {
+//GET -> /airplanes
+const getAll = async (req,res) => {
     try {
-        const response = await flightService.destroy(req.params.id);
+        const response = await airplaneService.getAll(req.query);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully deleted flight',
+            message: 'Successfully fetched airplanes',
             err: {}
         });
     } catch (error) {
@@ -101,7 +59,49 @@ const destroy = async (req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t delete flight',
+            message: 'Oops! Some error occurred, can\'t fetch airplanes',
+            err: error
+        });
+    }
+}
+
+//PATCH -> /airplanes/:id
+const update = async (req,res) => {
+    try {
+        const response = await airplaneService.update(req.params.id, req.body);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: 'Successfully updated airplane',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Oops! Some error occurred, can\'t update airplane',
+            err: error
+        });
+    }
+} 
+
+//DELETE -> /airplanes/:id
+const destroy = async (req,res) => {
+    try {
+        const response = await airplaneService.destroy(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: 'Successfully deleted airplane',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Oops! Some error occurred, can\'t delete airplane',
             err: error
         });
     }
@@ -115,4 +115,3 @@ module.exports = {
     update,
     destroy,
 }
-

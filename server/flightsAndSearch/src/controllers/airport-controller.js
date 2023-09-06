@@ -1,109 +1,109 @@
-const {FlightService} = require('../services/index');
+const { AirportService } = require("../services/index");
 
-const flightService = new FlightService();
+const airportService = new AirportService();
 
-//POST -> /flights
-const create = async(req, res) => {
+//POST -> /airports
+const create = async (req,res) => {
     try {
-        const response = await flightService.create(req.body);
+        const response = await airportService.create(req.body);
         return res.status(201).json({
             data: response,
             success: true,
-            message: 'Successfully created flight',
+            message: "Successfully created airport",
             err: {}
-        });
+        });    
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t create a flight',
+            message: "Oops! Some error occurred, can\'t create an airport",
             err: error
-        });
+        })
     }
 }
 
-//GET -> /flights/:id
+//GET -> /airports/:id
 const get = async (req,res) => {
     try {
-        const response = await flightService.get(req.params.id);
+        const response = await airportService.get(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully fetched flight',
+            message: "Successfully fetched airport",
             err: {}
-        });
+        });    
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t fetch flight',
+            message: "Oops! Some error occurred, can\'t fetch airport",
             err: error
-        });
+        })
     }
 }
 
-//GET -> /flights
+//GET -> /airports
 const getAll = async (req,res) => {
     try {
-        const response = await flightService.getAll(req.query);
+        const response = await airportService.getAll(req.query);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully fetched flights',
+            message: "Successfully fetched airports",
             err: {}
-        });
+        });    
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t fetch flights',
+            message: "Oops! Some error occurred, can\'t fetch airports",
             err: error
-        });
+        })
     }
 }
 
-//PATCH -> /flights/:id
+//PATCH -> /airports/:id
 const update = async (req,res) => {
     try {
-        const response = await flightService.update(req.params.id, req.body);
+        const response = await airportService.update(req.params.id,req.body);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully updated flight details',
+            message: "Successfully updated airport",
             err: {}
-        });
+        });    
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t update flight details',
+            message: "Oops! Some error occurred, can\'t update airport",
             err: error
-        });
+        })
     }
-} 
+}
 
-//DELETE -> /flights/:id
+//DELETE -> /airports/:id
 const destroy = async (req,res) => {
     try {
-        const response = await flightService.destroy(req.params.id);
+        const response = await airportService.destroy(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully deleted flight',
+            message: "Successfully deleted airport",
             err: {}
-        });
+        });    
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occurred, can\'t delete flight',
+            message: "Oops! Some error occurred, can\'t delete airport",
             err: error
-        });
+        })
     }
 }
 
@@ -115,4 +115,3 @@ module.exports = {
     update,
     destroy,
 }
-

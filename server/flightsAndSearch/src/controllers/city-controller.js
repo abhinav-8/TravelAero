@@ -2,10 +2,10 @@ const {CityService} = require("../services/index");
 
 const cityService = new CityService();
 
-//POST -> /city/
+//POST -> /cities
 const create = async (req,res) => {
     try {
-        const response = await cityService.createCity(req.body);
+        const response = await cityService.create(req.body);
         return res.status(201).json({
             data: response,
             success: true,
@@ -17,16 +17,16 @@ const create = async (req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occured, can\'t create city',
+            message: 'Oops! Some error occurred, can\'t create city',
             err: error
         });
     }
 }
 
-//GET -> /city/:id
+//GET -> /cities/:id
 const get = async (req,res) => {
     try {
-        const response = await cityService.getCity(req.params.id);
+        const response = await cityService.get(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
@@ -38,58 +38,16 @@ const get = async (req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occured, can\'t fetch city',
+            message: 'Oops! Some error occurred, can\'t fetch city',
             err: error
         });
     }
 } 
 
-//PATCH -> /city/:id
-const update = async (req,res) => {
-    try {
-        const response = await cityService.updateCity(req.params.id, req.body);
-        return res.status(200).json({
-            data: response,
-            success: true,
-            message: 'Successfully updated city',
-            err: {}
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            data: {},
-            success: false,
-            message: 'Oops! Some error occured, can\'t update city',
-            err: error
-        });
-    }
-} 
-
-//DELETE -> /city/:id
-const destroy = async (req,res) => {
-    try {
-        const response = await cityService.deleteCity(req.params.id, req.body);
-        return res.status(200).json({
-            data: response,
-            success: true,
-            message: 'Successfully deleted city',
-            err: {}
-        });
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            data: {},
-            success: false,
-            message: 'Oops! Some error occured, can\'t delete city',
-            err: error
-        });
-    }
-}
-
-//GET -> /city
+//GET -> /cities
 const getAll = async (req,res) => {
     try {
-        const response = await cityService.getAllCities(req.query);
+        const response = await cityService.getAll(req.query);
         return res.status(200).json({
             data: response,
             success: true,
@@ -101,16 +59,59 @@ const getAll = async (req,res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Oops! Some error occured, can\'t fetch cities',
+            message: 'Oops! Some error occurred, can\'t fetch cities',
             err: error
         });
     }
 }
 
+//PATCH -> /cities/:id
+const update = async (req,res) => {
+    try {
+        const response = await cityService.update(req.params.id, req.body);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: 'Successfully updated city',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Oops! Some error occurred, can\'t update city',
+            err: error
+        });
+    }
+} 
+
+//DELETE -> /cities/:id
+const destroy = async (req,res) => {
+    try {
+        const response = await cityService.destroy(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: 'Successfully deleted city',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Oops! Some error occurred, can\'t delete city',
+            err: error
+        });
+    }
+}
+
+
 module.exports = {
     create,
     get,
+    getAll,
     update,
     destroy,
-    getAll,
 }
