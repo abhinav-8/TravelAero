@@ -1,4 +1,5 @@
 const {CityService} = require("../services/index");
+const {serverErrorCodes,successCodes} = require("../utils/error-codes");
 
 const cityService = new CityService();
 
@@ -6,7 +7,7 @@ const cityService = new CityService();
 const create = async (req,res) => {
     try {
         const response = await cityService.create(req.body);
-        return res.status(201).json({
+        return res.status(successCodes.CREATED).json({
             data: response,
             success: true,
             message: 'Successfully created city',
@@ -14,7 +15,7 @@ const create = async (req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
             data: {},
             success: false,
             message: 'Oops! Some error occurred, can\'t create city',
@@ -27,7 +28,7 @@ const create = async (req,res) => {
 const get = async (req,res) => {
     try {
         const response = await cityService.get(req.params.id);
-        return res.status(200).json({
+        return res.status(successCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully fetched city',
@@ -35,7 +36,7 @@ const get = async (req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
             data: {},
             success: false,
             message: 'Oops! Some error occurred, can\'t fetch city',
@@ -48,7 +49,7 @@ const get = async (req,res) => {
 const getAll = async (req,res) => {
     try {
         const response = await cityService.getAll(req.query);
-        return res.status(200).json({
+        return res.status(successCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully fetched cities',
@@ -56,7 +57,7 @@ const getAll = async (req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
             data: {},
             success: false,
             message: 'Oops! Some error occurred, can\'t fetch cities',
@@ -69,7 +70,7 @@ const getAll = async (req,res) => {
 const update = async (req,res) => {
     try {
         const response = await cityService.update(req.params.id, req.body);
-        return res.status(200).json({
+        return res.status(successCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully updated city',
@@ -77,7 +78,7 @@ const update = async (req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
             data: {},
             success: false,
             message: 'Oops! Some error occurred, can\'t update city',
@@ -90,7 +91,7 @@ const update = async (req,res) => {
 const destroy = async (req,res) => {
     try {
         const response = await cityService.destroy(req.params.id);
-        return res.status(200).json({
+        return res.status(successCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully deleted city',
@@ -98,7 +99,7 @@ const destroy = async (req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
             data: {},
             success: false,
             message: 'Oops! Some error occurred, can\'t delete city',
