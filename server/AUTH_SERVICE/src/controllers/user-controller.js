@@ -45,7 +45,7 @@ const destroy = async (req, res) => {
 };
 
 //GET -> /users/:id
-const get = async (req, res) => {
+const getById = async (req, res) => {
   try {
     const response = await userService.get(req.params.id);
     return res.status(successCodes.OK).json({
@@ -65,8 +65,30 @@ const get = async (req, res) => {
   }
 };
 
+//POST -> /login
+const login = async (req,res) => {
+  try {
+    const response = await userService.login(req.body.email,req.body.password);
+    return res.status(successCodes.OK).json({
+      data: response,
+      success: true,
+      message: "Successfully logged in",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
+      data: {},
+      success: false,
+      message: "Oops! Some error occurred, can't login",
+      err: error,
+    })
+  }
+}
+
 module.exports = {
     create,
     destroy,
-    get
+    getById,
+    login,
 }
