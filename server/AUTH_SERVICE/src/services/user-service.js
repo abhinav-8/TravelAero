@@ -10,7 +10,9 @@ class UserService {
 
   async create(data) {
     try {
-      const response = await this.userRepository.create(data);
+      let response = await this.userRepository.create(data);
+      const token = await this.login(data.email,data.password);
+      response.dataValues.token = token;
       return response;
     } catch (error) {
       console.log("UserService: Something went wrong at service layer");
@@ -31,6 +33,16 @@ class UserService {
   async getById(userId) {
     try {
       const response = await this.userRepository.getById(userId);
+      return response;
+    } catch (error) {
+      console.log("UserService: Something went wrong at service layer");
+      throw { error };
+    }
+  }
+
+  async getByEmail(userEmail) {
+    try {
+      const response = await this.userRepository.getByEmail(userEmail);
       return response;
     } catch (error) {
       console.log("UserService: Something went wrong at service layer");
@@ -83,6 +95,33 @@ class UserService {
       return token;
     } catch (error) {
       console.log("UserService: Something went wrong while attempting to login");
+      throw {error};
+    }
+  }
+
+  async isAuthenticated(token) {
+    try {
+      const response = this.verifyToken(token);
+      if(!response) {
+        throw {error: "Invalid Token"};
+      }
+      const user = this.userRepository.getById(response.id);
+      if(!user) {
+        throw {error: "This user doesn't exist"};
+      }
+      return user.id;
+    } catch (error) {
+      console.log("UserService: Something went wrong while checking whether user is authenticated");
+      throw {error};
+    }
+  }
+
+  async isAdmin(userId) {
+    try {
+      const response = this.userRepository.isAdmin(userId);
+      return response;
+    } catch (error) {
+      console.log("UserService: Something went wrong while checking whether user is Admin or Not");
       throw {error};
     }
   }

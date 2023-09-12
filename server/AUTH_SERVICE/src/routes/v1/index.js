@@ -9,4 +9,7 @@ router.delete("/users/:id",UserController.destroy);
 router.get("/users/:id",UserController.getById);
 router.post("/login",AuthValidate.validateUserAuth,UserController.login);
 
+router.get("/isAuthenticated",UserController.isAuthenticated);
+router.get("/isAdmin",AuthValidate.validateIsAdmin,UserController.isAdmin);
 module.exports = router;
+

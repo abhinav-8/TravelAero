@@ -1,9 +1,11 @@
-const { User } = require("../models/index");
+const { User, Role } = require("../models/index");
 
 class UserRepository {
   async create(data) {
     try {
       const user = await User.create(data);
+      const role_customer = await Role.findByPk(2);
+      user.addRole(role_customer);
       return user;
     } catch (error) {
       console.log("UserRepository: Something went wrong at repository layer");
@@ -43,11 +45,27 @@ class UserRepository {
         where: {
           email: userEmail,
         },
+        attributes: ["email", "id"],
       });
       return user;
     } catch (error) {
         console.log("UserRepository: Something went wrong while fetching user by email");
         throw {error};
+    }
+  }
+
+  async isAdmin(userId) {
+    try {
+      const user = await User.findByPk(userId);
+      const adminRole = await Role.findOne({
+        where:{
+          name:"ADMIN"
+        }
+      });
+      return user.hasRole(adminRole);
+    } catch (error) {
+      console.log("UserRepository: Something went wrong on repository layer");
+      throw {error};
     }
   }
 }
