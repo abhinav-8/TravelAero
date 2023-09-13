@@ -1,8 +1,8 @@
 # TravelAero's FlightsAndSearch Service 
 
-## Project Setup:
+## Service Setup:
 
-- Go to `FLIGHTS_AND_SEARCH_SERVICE/src` and execute `npm install`
+- Go to `FLIGHTS_AND_SEARCH_SERVICE` and execute `npm install`
 - Create a `.env` file in the `FLIGHTS_AND_SEARCH_SERVICE` directory based on file `.envExample` 
 - Create a new  file `config.json` inside `src/config` folder with following json
  

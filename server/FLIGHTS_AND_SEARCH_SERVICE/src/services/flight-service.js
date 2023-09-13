@@ -1,5 +1,5 @@
 const CrudService = require("./crud-service");
-const { FlightRepository, AirplaneRepository } = require("../repository/index");
+const { FlightRepository, AirplaneRepository } = require("../repositories/index");
 const { compareTime } = require("../utils/compareTime");
 
 class FlightService extends CrudService {
