@@ -47,7 +47,7 @@ const destroy = async (req, res) => {
 //GET -> /users/:id
 const getById = async (req, res) => {
   try {
-    const response = await userService.get(req.params.id);
+    const response = await userService.getById(req.params.id);
     return res.status(successCodes.OK).json({
       data: response,
       success: true,
