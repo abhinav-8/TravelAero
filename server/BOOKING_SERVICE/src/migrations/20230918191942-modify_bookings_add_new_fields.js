@@ -27,6 +27,7 @@ module.exports = {
           defaultValue: 0
         }  
       );
+      //To migrate write command `npx sequelize db:migrate`
   },
 
   async down (queryInterface, Sequelize) {
@@ -38,5 +39,6 @@ module.exports = {
      */
     await queryInterface.removeColumn('Bookings','noOfSeats');
     await queryInterface.removeColumn('Bookings','totalCost');
+      //To undo the migration write command `npx sequelize db:migrate:undo`
   }
 };
