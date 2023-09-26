@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(() => ({
   NavbarContainer: {
-    margin: "0px 10px",
     padding: "10px 0px",
     display: "flex",
     justifyContent: "space-around",
@@ -10,13 +9,17 @@ export default makeStyles(() => ({
     fontWeight: "500",
     fontSize: "15px",
     color: "black",
+    backgroundColor: "rgba(0, 0, 0,0.2)",
+    width: "max-width",
+    boxShadow: "1px 0px 0px",
+    border: "1px solid rgba(255, 255, 255)",
   },
   LogoContainer: {
     width: "20%",
-    display: "inline-block",
     cursor: "pointer",
     "&:hover": {
       color: "grey",
+      transform: "scale(1.2)",
     },
   },
   NavButtonsContainer: {

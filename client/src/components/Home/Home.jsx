@@ -10,7 +10,10 @@ const Home = () => {
       <Navbar />
 
       <div>
-        <Typography className={classes.Header}>Ready To take off?</Typography>
+        <Typography className={classes.Header}>Ready to take off?</Typography>
+        <Typography className={classes.SubHeader}>
+          Book your flights hassle-free and enjoy a seamless travel experience.
+        </Typography>
       </div>
       <TicketBooking />
     </>
