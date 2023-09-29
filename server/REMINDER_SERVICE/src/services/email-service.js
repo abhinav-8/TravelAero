@@ -1,18 +1,20 @@
 const sender = require('../config/emailConfig');
 
-const sendBasicEmail = (mailFrom, mailTo, mailSubject, mailBody) => {
-    sender.sendMail({
-        from: mailFrom,
-        to: mailTo,
-        subject: mailSubject,
-        text: mailBody
-    });
+const sendBasicEmail = async (mailFrom, mailTo, mailSubject, mailBody) => {
+    try {
+        const response = await sender.sendMail({
+            from: mailFrom,
+            to: mailTo,
+            subject: mailSubject,
+            text: mailBody
+        });  
+        return response;     
+    } catch (error) {
+        console.log('Error in email service');
+    }
 }
 
 module.exports = {
     sendBasicEmail
 }
 
-/**
- * SMTP -> 
- */
