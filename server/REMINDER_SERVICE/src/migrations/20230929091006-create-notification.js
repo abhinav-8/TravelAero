@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull:false,
       },
-      recepientEmail: {
+      recipientEmail: {
         type: Sequelize.STRING,
         allowNull:false,
       },

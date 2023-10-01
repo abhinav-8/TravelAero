@@ -15,7 +15,7 @@ const setupJobs = () => {
         response.forEach((email) => {
             sender.sendMail({
                 from:"TravelAero <support@travelaero.com>",
-                to:email.recepientEmail,
+                to:email.recipientEmail,
                 subject:email.subject,
                 text:email.content,
             }, async(err,data)=>{
