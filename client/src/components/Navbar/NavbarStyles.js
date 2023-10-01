@@ -12,7 +12,6 @@ export default makeStyles(() => ({
     backgroundColor: "rgba(0, 0, 0,0.2)",
     width: "max-width",
     boxShadow: "1px 0px 0px",
-    border: "1px solid rgba(255, 255, 255)",
   },
   LogoContainer: {
     width: "20%",
