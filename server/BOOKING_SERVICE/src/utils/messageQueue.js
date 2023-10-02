@@ -5,6 +5,7 @@ const createChannel = async () => {
   try {
     const connection = await amqplib.connect(MESSAGE_BROKER_URL);
     const channel = await connection.createChannel();
+    //assertExchange creates the exchange if it doesn't exist and establish the connection
     await channel.assertExchange(EXCHANGE_NAME, "direct", false);
     return channel;
   } catch (error) {
