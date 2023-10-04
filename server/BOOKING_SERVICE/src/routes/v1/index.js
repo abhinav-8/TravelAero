@@ -9,7 +9,6 @@ const createRoutes = (channel) => {
   router.post('/bookings', bookingController.create);
   router.get('/bookings/:id', bookingController.get);
   router.patch('/bookings/:id', bookingController.cancelBooking);
-  router.post('/publish', bookingController.sendMessageToQueue);
 
   return router;
 };
