@@ -10,6 +10,6 @@ router.get("/users/:id",UserController.getById);
 router.post("/login",AuthValidate.validateUserAuth,UserController.login);
 
 router.get("/isAuthenticated",UserController.isAuthenticated);
-router.get("/isAdmin",AuthValidate.validateIsAdmin,UserController.isAdmin);
+router.get("/isAdmin",UserController.isAdmin);
 module.exports = router;
 

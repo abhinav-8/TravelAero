@@ -10,7 +10,7 @@ const setupServer = async() => {
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
-    app.use('/api',ApiRoutes);
+    app.use('/authservice/api',ApiRoutes);
     app.listen(PORT ,async()=>{
         console.log(`Server started at port ${PORT}`);
         // await db.sequelize.sync({alter:true});
