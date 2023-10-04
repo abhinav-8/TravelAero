@@ -8,7 +8,6 @@ class UserRepository {
       user.addRole(role_customer);
       return user;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -22,7 +21,6 @@ class UserRepository {
       });
       return true;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -34,7 +32,6 @@ class UserRepository {
       });
       return user;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -48,7 +45,6 @@ class UserRepository {
       });
       return user;
     } catch (error) {
-        console.log("UserRepository: Something went wrong while fetching user by email");
         throw {error};
     }
   }
@@ -63,7 +59,6 @@ class UserRepository {
       });
       return user.hasRole(adminRole);
     } catch (error) {
-      console.log("UserRepository: Something went wrong on repository layer");
       throw {error};
     }
   }

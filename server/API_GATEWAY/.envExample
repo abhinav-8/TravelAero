@@ -1,0 +1,6 @@
+PORT=3004
+FLIGHT_SERVICE_PATH_LOCAL='http://localhost:3000'
+AUTH_SERVICE_PATH_LOCAL='http://localhost:3001'
+BOOKING_SERVICE_PATH_LOCAL='http://localhost:3002'
+//These paths are target and mapped with their respective proxy
+//So, when user hits localhost:3004/bookingservice/api, it will go to target url localhost:3001/bookingService/api

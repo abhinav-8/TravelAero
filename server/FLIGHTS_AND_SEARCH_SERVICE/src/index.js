@@ -14,7 +14,7 @@ const setupServer = async () => {
     app.use(bodyParser.urlencoded({extended:true}));
 
     // If any incoming request has /api,it's gonna map to ApiRoutes
-    app.use('/api', ApiRoutes);
+    app.use('/flightservice/api', ApiRoutes);
 
     app.listen(PORT,() => {
         console.log(`Server started at ${PORT}`);
