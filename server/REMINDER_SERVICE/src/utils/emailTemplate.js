@@ -517,7 +517,7 @@ table, td { color: #000000; } @media (max-width: 480px) { #u_content_heading_1 .
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30px;font-family:'Open Sans',sans-serif;" align="left">
         
   <div class="v-text-align v-line-height v-font-size" style="font-size: 14px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%;">www.travelaero.com </p>
+    <p style="font-size: 14px; line-height: 140%;">Reach out to us at: support@travelaero.com</p>
 <p style="font-size: 14px; line-height: 140%;">+91 1234567800</p>
   </div>
 
