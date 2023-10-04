@@ -13,7 +13,14 @@ class UserService {
       let response = await this.userRepository.create(data);
       const token = await this.login(data.email,data.password);
       response.dataValues.token = token;
-      return response;
+      return {
+        id:response.dataValues.id,
+        name:response.dataValues.name,
+        email:response.dataValues.email,
+        token:response.dataValues.token,
+        createdAt:response.dataValues.createdAt,
+        updatedAt:response.dataValues.updatedAt,
+      };
     } catch (error) {
       console.log("UserService: Something went wrong at service layer");
       throw { error };
@@ -72,6 +79,7 @@ class UserService {
 
   verifyPassword(userInputplainPassword, encryptedPassword) {
     try {
+      console.log('siiiiiu');
       const response = bcrypt.compareSync(userInputplainPassword, encryptedPassword);
       return response;
     } catch(error) {
