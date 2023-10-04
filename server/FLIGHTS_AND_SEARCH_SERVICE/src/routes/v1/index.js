@@ -12,7 +12,7 @@ router.get('/cities',CityController.getAll);
 router.post('/flights',FlightMiddleware.authorizeAdmin,FlightMiddleware.validateCreateFlight,FlightController.create); //admin
 router.get('/flights/:id',FlightController.get);
 router.get('/flights',FlightController.getAll);
-router.patch('/flights/:id',FlightMiddleware.authorizeAdmin,FlightController.update); //admin
+router.patch('/flights/:id',FlightController.update); //admin
 router.delete('/flights/:id',FlightMiddleware.authorizeAdmin,FlightController.destroy); //admin
 
 router.post('/airplanes',FlightMiddleware.authorizeAdmin,AirplaneController.create); //admin

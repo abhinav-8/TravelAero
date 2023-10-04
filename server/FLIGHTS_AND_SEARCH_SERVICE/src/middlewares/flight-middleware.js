@@ -43,7 +43,7 @@ const authorizeAdmin =  async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    console.log('siiu',error);
     return res.status(401).json({
       message: "Unauthorized",
     });

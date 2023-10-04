@@ -97,7 +97,7 @@ const isAuthenticated = async (req,res) => {
     return res.status(clientErrorCodes.UNAUTHORISED).json({
       data: {},
       success: false,
-      message: "authenticated",
+      message: "unauthenticated",
       err: error,
     })
   }

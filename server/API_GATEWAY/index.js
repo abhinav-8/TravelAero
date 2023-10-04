@@ -25,13 +25,13 @@ app.use(limiter);
 app.use("/bookingservice", async (req, res, next) => {
   try {
     const response = await axios.get(
-      `${AUTH_SERVICE_PATH_LOCAL}/authservice/api/v1/isAuthenticated`,
-      {
-        headers: {
-          authorization: req.headers["authorization"],
-        },
-      }
-    );
+        `${AUTH_SERVICE_PATH_LOCAL}/authservice/api/v1/isAuthenticated`,{
+          headers: {
+            'Authorization': req.headers['authorization'],
+          },
+        }
+      );
+    
     if (response.data.success) {
       next();
     } else {
