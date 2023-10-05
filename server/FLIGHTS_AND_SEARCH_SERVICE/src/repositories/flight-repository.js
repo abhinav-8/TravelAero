@@ -20,6 +20,18 @@ class FlightRepository extends CrudRepository {
                  ]
             })
         }
+        if(data.departureDate){
+            const departureDateFormatted = new Date(data.departureDate).toISOString();
+            const nextDayDate = new Date(data.departureDate);
+            nextDayDate.setDate(nextDayDate.getDate() + 1);
+            const nextDateFormatted = nextDayDate.toISOString();
+            Object.assign(filter,{
+                [Op.and]: [
+                    { departureTime: {[Op.gte]: departureDateFormatted} },
+                    { departureTime: {[Op.lt]: nextDateFormatted} },
+                 ]
+            })
+        }
         else if(data.minPrice) {
             Object.assign(filter, {price: {[Op.gte]: data.minPrice}});
         } 
