@@ -1,0 +1,110 @@
+openapi: 3.0.0
+info:
+  title: BOOKING SERVICE
+  version: 1.0.0
+  description: Documentation for Booking Service APIs
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+tags:
+  name: BOOKINGS
+  description: API endpoints for flight bookings and management
+paths:
+  /bookingservice/api/v1/bookings:
+    post:
+      summary: Create a new booking
+      tags: [BOOKINGS]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                flightId:
+                  type: integer
+                userId:
+                  type: integer
+                noOfSeats:
+                  type: integer
+              required:
+                - flightId
+                - userId
+                - noOfSeats
+      responses:
+        200:
+          description: Request successful
+        400:
+          description: Bad Request (might be missing mandatory fields)
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+        501:
+          description: Not Implemented
+        201:
+          description: Successfully created
+        404:
+          description: Not Found
+
+  /bookingservice/api/v1/bookings/{id}:
+    get:
+      summary: Get booking details of particular id
+      tags: [BOOKINGS]
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the booking to retrieve
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Request successful
+        400:
+          description: Bad Request (might be missing mandatory fields)
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+        501:
+          description: Not Implemented
+        201:
+          description: Successfully created
+        404:
+          description: Not Found
+
+    patch:
+      summary: Delete booking of particular id
+      tags: [BOOKINGS]
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the booking to Delete
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Request successful
+        400:
+          description: Bad Request (might be missing mandatory fields)
+        401:
+          description: Unauthorized
+        500:
+          description: Internal Server Error
+        501:
+          description: Not Implemented
+        201:
+          description: Successfully created
+        404:
+          description: Not Found
