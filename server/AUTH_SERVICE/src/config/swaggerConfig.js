@@ -1,25 +1,7 @@
-const swaggerJsdoc = require('swagger-jsdoc');
-const options = {
-  swaggerDefinition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'AUTH SERVICE',
-      version: '1.0.0',
-      description: 'Documentation for Auth Service APIs',
-    },
-    components: {
-      securitySchemes: {
-        BearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
-      },
-    },
-  },
-  apis: ['src/routes/v1/index.js'],
-};
+const fs = require('fs');
+const path = require("path");
+const YAML = require('yaml');
 
-const swaggerSpec = swaggerJsdoc(options);
+const swaggerDocument = YAML.parse(fs.readFileSync(path.resolve(__dirname,'../utils/swagger.yaml'), 'utf8'));
 
-module.exports = swaggerSpec;
+module.exports = swaggerDocument;
