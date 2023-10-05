@@ -1,4 +1,2 @@
 # TravelAero
-This is a flight booking platform.
-<br/>
-Under development.
+This is a flight booking platform where 
