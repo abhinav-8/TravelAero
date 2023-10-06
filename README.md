@@ -29,16 +29,13 @@ TravelAero is a cutting-edge flight booking platform having built it's backend o
 - Implements secure database practices to `protect user data`.
 - Robust **error handling** to ensure smooth user experience and application stability.
 - Logging mechanisms for tracking application activities and debugging.
-- **API Contract**:
-    - The API structure is defined in swagger.yaml in the respective services' utils directories. It outlines endpoints, payloads, and responses.
+- **API Contract**: The API structure is defined in swagger.yaml in the respective services' utils directories. It outlines endpoints, payloads, and responses.
 
 
 ## Setup
 
 - clone the repo - `git clone git@github.com:abhinav-8/TravelAero.git`
-
-> Server
-- Read the README.md for the respective services' setup and installation , find all the service inside `server` directory
+- Read the README.md for the respective services' setup and installation , find all the services inside `server` directory
 
 
 
