@@ -13,7 +13,7 @@ The API Gateway in TravelAero acts as a central entry point, allowing seamless c
 
 ```
 - /flightservice/api/v1/get, 
-- bookingservice/api/v1/create
+- /bookingservice/api/v1/create
 ```
 
 
