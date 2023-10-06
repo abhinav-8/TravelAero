@@ -20,7 +20,7 @@ The Auth Service provides secure user authentication using JWT tokens. It manage
 }
 
 ```
-* Go to `AUTH_DB_DEV/src` and execute 
+* Go to `AUTH_SERVICE/src` and execute 
   * `npx sequelize db:create`
   * `npx sequelize db:migrate`
   * `npx sequelize db:seed:all`
