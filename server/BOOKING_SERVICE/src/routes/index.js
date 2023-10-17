@@ -1,9 +1,13 @@
-const express = require('express'); 
-
+const express = require('express');
 const v1ApiRoutes = require('./v1/index');
 
-const router = express.Router();
+const createApiRoutes = (channel) => {
+  const router = express.Router();
 
-router.use('/v1',v1ApiRoutes);
+  // Mount the v1 API routes and pass the channel to the route handlers
+  router.use('/v1', v1ApiRoutes(channel));
 
-module.exports = router; 
+  return router;
+};
+
+module.exports = createApiRoutes;

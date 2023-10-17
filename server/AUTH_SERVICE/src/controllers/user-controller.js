@@ -1,5 +1,5 @@
 const { UserService } = require("../services/index");
-const { serverErrorCodes, successCodes } = require("../utils/error-codes");
+const { serverErrorCodes, successCodes, clientErrorCodes } = require("../utils/error-codes");
 const userService = new UserService();
 
 //POST -> /signup
@@ -13,7 +13,6 @@ const create = async (req, res) => {
       err: {},
     });
   } catch (error) {
-    console.log(error);
     return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
       data: {},
       success: false,
@@ -34,7 +33,6 @@ const destroy = async (req, res) => {
       err: {},
     });
   } catch (error) {
-    console.log(error);
     return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
       data: {},
       success: false,
@@ -55,7 +53,6 @@ const getById = async (req, res) => {
       err: {},
     });
   } catch (error) {
-    console.log(error);
     return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
       data: {},
       success: false,
@@ -76,7 +73,6 @@ const login = async (req,res) => {
       err: {},
     });
   } catch (error) {
-    console.log(error);
     return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
       data: {},
       success: false,
@@ -91,19 +87,17 @@ const isAuthenticated = async (req,res) => {
     const bearerHeader = req.headers['authorization'];
     const token = bearerHeader?.split(' ')[1];
     const response = await userService.isAuthenticated(token);
-    
     return res.status(successCodes.OK).json({
       data: response,
       success: true,
-      message: "Successfully authenticated and token is valid",
+      message: "authenticated",
       err: {},
     })
   } catch (error) {
-    console.log(error);
-    return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
+    return res.status(clientErrorCodes.UNAUTHORISED).json({
       data: {},
       success: false,
-      message: "Oops! Some error occurred",
+      message: "unauthenticated",
       err: error,
     })
   }
@@ -111,19 +105,29 @@ const isAuthenticated = async (req,res) => {
 
 const isAdmin = async (req, res) => {
   try {
-    const response = await userService.isAdmin(req.body.userId);
-    return res.status(successCodes.OK).json({
-      data: response,
-      success: true,
-      message: "Successfully fetched whether user is admin or not",
-      err: {},
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(serverErrorCodes.INTERNAL_SERVOR_ERROR).json({
+    const bearerHeader = req.headers['authorization'];
+    const token = bearerHeader?.split(' ')[1];
+    const user = await userService.isAuthenticated(token);
+    const response = await userService.isAdmin(user);
+    if(response){
+      return res.status(successCodes.OK).json({
+        data: response,
+        success: true,
+        message: "authorized",
+        err: {},
+      });
+    }
+    return res.status(clientErrorCodes.UNAUTHORISED).json({
       data: {},
       success: false,
-      message: "Oops! Some error occurred",
+      message: "unauthorized",
+      err: error,
+    })
+  } catch (error) {
+    return res.status(clientErrorCodes.UNAUTHORISED).json({
+      data: {},
+      success: false,
+      message: "unauthorized",
       err: error,
     })
   }

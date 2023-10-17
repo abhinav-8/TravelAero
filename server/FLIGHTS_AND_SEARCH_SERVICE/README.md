@@ -1,6 +1,6 @@
-# TravelAero's FlightsAndSearch Service 
-
-## Service Setup:
+# TravelAero's Flights Service 
+TravelAero's Flights Service serves as the core module for managing flight-related data. It enables users to search for flights based on preferences and allows admins to create, update, and delete records for airplanes, cities, airports, and flights, ensuring dynamic and up-to-date information.
+## Setup and Installation :
 
 - Go to `FLIGHTS_AND_SEARCH_SERVICE` and execute `npm install`
 - Create a `.env` file in the `FLIGHTS_AND_SEARCH_SERVICE` directory based on file `.envExample` 
@@ -27,9 +27,9 @@
   * `npx sequelize db:seed:all`
 
 - Go to `FLIGHTS_AND_SEARCH_SERVICE` and start the server by `npm start`
-
+- Check the `API Contract` at `http://localhost:{PORT}/flightservice/api-docs`
 <br>
 
-## DB Design
+<!-- ## DB Design
 
-![Flight Search Database](src/assets/flightsAndSearch_DB_Design.png)
+![Flight Search Database](src/assets/flightsAndSearch_DB_Design.png) -->

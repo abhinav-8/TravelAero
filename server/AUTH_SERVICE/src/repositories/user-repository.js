@@ -8,7 +8,6 @@ class UserRepository {
       user.addRole(role_customer);
       return user;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -22,7 +21,6 @@ class UserRepository {
       });
       return true;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -30,11 +28,10 @@ class UserRepository {
   async getById(userId) {
     try {
       const user = await User.findByPk(userId, {
-        attributes: ["email", "id"],
+        attributes: ["email", "id","name"],
       });
       return user;
     } catch (error) {
-      console.log("UserRepository: Something went wrong at repository layer");
       throw { error };
     }
   }
@@ -44,12 +41,10 @@ class UserRepository {
       const user = await User.findOne({
         where: {
           email: userEmail,
-        },
-        attributes: ["email", "id"],
+        }
       });
       return user;
     } catch (error) {
-        console.log("UserRepository: Something went wrong while fetching user by email");
         throw {error};
     }
   }
@@ -64,7 +59,6 @@ class UserRepository {
       });
       return user.hasRole(adminRole);
     } catch (error) {
-      console.log("UserRepository: Something went wrong on repository layer");
       throw {error};
     }
   }
