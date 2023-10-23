@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarStyles from "./NavbarStyles";
 import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const classes = NavbarStyles();
   return (
@@ -12,8 +13,12 @@ const Navbar = () => {
         <Typography className={classes.NavButton}>Contact Us</Typography>
       </div>
       <div className={classes.UserAccountContainer}>
-        <div className={classes.SignInButton}>Sign In</div>
-        <div className={classes.SignUpButton}>Sign Up</div>
+        <div className={classes.SignInButton}>
+          <Link to="/signin">Sign In</Link>
+        </div>
+        <div className={classes.SignUpButton}>
+          <Link to="/signup">Sign Up</Link>
+        </div>
       </div>
     </div>
   );

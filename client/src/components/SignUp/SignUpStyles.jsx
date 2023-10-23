@@ -33,5 +33,3 @@ export default makeStyles((theme) => ({
     zIndex: "10",
   },
 }));
-
-

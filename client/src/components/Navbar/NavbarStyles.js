@@ -7,17 +7,19 @@ export default makeStyles(() => ({
     justifyContent: "space-around",
     fontFamily: "Noto Sans",
     fontWeight: "500",
-    fontSize: "15px",
+    fontSize: "20px",
     color: "black",
     backgroundColor: "rgba(0, 0, 0,0.2)",
     width: "max-width",
-    boxShadow: "1px 0px 0px",
+    boxShadow: "1px 0px 1px",
   },
   LogoContainer: {
-    width: "20%",
+    height: "auto",
+    width: "auto",
     cursor: "pointer",
+    transition: "transform .2s",
     "&:hover": {
-      color: "grey",
+      color: "white",
       transform: "scale(1.2)",
     },
   },
@@ -28,8 +30,11 @@ export default makeStyles(() => ({
   },
   NavButton: {
     cursor: "pointer",
+    fontSize: "20px",
+    transition: "transform .2s",
     "&:hover": {
-      color: "grey",
+      color: "white",
+      transform: "scale(1.2)",
     },
   },
   UserAccountContainer: {
@@ -39,14 +44,18 @@ export default makeStyles(() => ({
   },
   SignInButton: {
     cursor: "pointer",
+    transition: "transform .2s",
     "&:hover": {
-      color: "grey",
+      color: "white",
+      transform: "scale(1.2)",
     },
   },
   SignUpButton: {
     cursor: "pointer",
+    transition: "transform .2s",
     "&:hover": {
-      color: "grey",
+      color: "white",
+      transform: "scale(1.2)",
     },
   },
 }));
