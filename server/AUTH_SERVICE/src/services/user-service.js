@@ -91,7 +91,12 @@ class UserService {
       }
 
       const token = this.generateToken({email: user.email,id:user.id});
-      return token;
+      return {
+        token:token,
+        name:user.name,
+        email:user.email,
+        id:user.id,
+      };
     } catch (error) {
       throw {error};
     }
