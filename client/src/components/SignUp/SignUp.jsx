@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signup } from "../../redux/authorize/Authorize.action";
 import {
   Button,
@@ -19,13 +20,16 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const classes = SignUpStyles();
+  const navigate = useNavigate();
   const signUp = () => {
     const userDetails = {
       name: name,
       email: email,
       password: password,
     };
+
     dispatch(signup(userDetails));
+    navigate("/");
   };
   const handleSubmit = (event) => {
     event.preventDefault();
